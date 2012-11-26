@@ -18,19 +18,10 @@ class Node {
         System.out.print("} ");
     }
 
-    @Override
-    public String toString() {
-        String returnString;
-
-        boolean done = false;
-        //while(!done) {
-        // Get bottom left node
-
-        // Get node
-
+    public void showTree() {
         Stack globalStack = new Stack();
-        globalStack.push(ADS_4.stack.peek());
-        int nBlanks = 64;
+        globalStack.push(ADS_4.stack.peek());  // Onze eigen stack
+        int nBlanks = 32;
         boolean isRowEmpty = false;
         System.out.println("");
         System.out.println("......................................................");
@@ -48,34 +39,29 @@ class Node {
                     System.out.print(temp.data);
                     localStack.push(temp.leftChild);
                     localStack.push(temp.rightChild);
-
+                    
                     if (temp.leftChild != null
                             || temp.rightChild != null) {
                         isRowEmpty = false;
                     }
                 } else {
-                    System.out.print("  ");
+                    System.out.print("[]");
                     localStack.push(null);
                     localStack.push(null);
                 }
                 for (int j = 0; j < nBlanks * 2 - 2; j++) {
                     System.out.print(' ');
                 }
-            }  // end while globalStack not empty
+            }
             System.out.println();
             nBlanks /= 2;
             while (localStack.isEmpty() == false) {
                 globalStack.push(localStack.pop());
             }
-        }  // end while isRowEmpty is false
+        }
         System.out.println("......................................................");
-
-
-        //}
-
-        return "";
     }
-}  // end class Node
+}
 
 class Tree {
 

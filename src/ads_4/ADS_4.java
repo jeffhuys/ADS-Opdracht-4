@@ -18,8 +18,7 @@ public class ADS_4 {
     public static StackNode stack;
     
     public static void main(String[] args) {
-        //String postfix = "42^24*8*-82^+48-/";
-        String postfix = "12+3*";
+        String postfix = "42^24*8*-82^+48-/";
         
         stack = new StackNode(20);
 
@@ -32,13 +31,18 @@ public class ADS_4 {
                 stack.push(n);
                 
             } else {
+                if(stack.size() < 2) {
+                    System.out.println("Postfix-expressie klopt niet!");
+                    System.exit(0);
+                }
+                
                 Node n = new Node();
                 n.data = ch; // Operator
                 
                 Node left;
                 Node right;
                 
-                System.out.println(stack.size());
+                //System.out.println(stack.size());
                 //stack.displayStack("Stack: ");
                 
                 right = stack.pop();
@@ -52,7 +56,8 @@ public class ADS_4 {
             }
         }
         
-        stack.displayStack("");
+        //stack.displayStack("");
+        stack.peek().showTree();
         
         Tree tree = new Tree();
         
